@@ -1,21 +1,20 @@
 import './App.css';
 import './styles.css';
 
+import Header from './Header';
+import Footer from './Footer';
 
-const ElFooter = (props)=>(<footer>What a such footer! <span>{props.year}</span></footer>)
-
-const ElHeader = ()=>(<header>The amazing header!</header>)
 
 
 function App() {
   return (
     <div className="layout">
-      <ElHeader/>
+      <Header border={"white"}/>
       <main className="content"></main>
-      <ElFooter year={2021}/>
+      <Footer year={2021} />
     </div>
   );
-  
+
 }
 
 export default App;
