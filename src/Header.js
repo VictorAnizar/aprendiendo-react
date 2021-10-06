@@ -6,7 +6,20 @@ const Header = (props) => (
             borderBottomStyle: "solid",
             borderBottomColor: props.border
         }}>
-        The amazing header!
+        <ul style={
+            {
+                listStyle: "none",
+                gap: "10px",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                flexWrap: "wrap"
+            }}>
+            <li>This</li>
+            <li>Is</li>
+            <li>The</li>
+            <li>Menu!</li>
+        </ul>
     </header>
 )
 
