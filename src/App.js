@@ -1,31 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import './styles.css';
 
-const user = ['Pepe', 'pacman', 'Mike'];
+
+const ElFooter = (props)=>(<footer>What a such footer! <span>{props.year}</span></footer>)
+
+const ElHeader = ()=>(<header>The amazing header!</header>)
 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <ul>
-          {user.map(user => <li>{user}</li>)}
-        </ul>
-      </header>
+    <div className="layout">
+      <ElHeader/>
+      <main className="content"></main>
+      <ElFooter year={2021}/>
     </div>
   );
+  
 }
 
 export default App;
