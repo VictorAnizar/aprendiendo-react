@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
+const user = ['Pepe', 'pacman', 'Mike'];
+
+
 function App() {
   return (
     <div className="App">
@@ -17,6 +20,9 @@ function App() {
         >
           Learn React
         </a>
+        <ul>
+          {user.map(user => <li>{user}</li>)}
+        </ul>
       </header>
     </div>
   );
