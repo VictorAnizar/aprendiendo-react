@@ -4,13 +4,13 @@ import '../TodoList.css'
 
 
 function TodoList() {
-    const tastks = ["Elem 1", "Elem 2", "Elem 3"];
+    const tasks = ["Elem 1", "Elem 2", "Elem 3"];
 
     return (
         <div className="list-wrapper">
-            {tastks.map((task)=>(
+            {tasks.map((task)=>(
                 <Todo task={task}/>
-            ))}
+            ))}p
         </div>
     );
 }
