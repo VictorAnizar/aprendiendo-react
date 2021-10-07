@@ -12,7 +12,10 @@ class Todo extends React.Component {
             <div className={`list-item ${this.state.done ? 'done' : ''}`}>
                 {this.props.task}
                 <button
-                onClick={()=>this.setState({done:false})}
+                onClick={()=>{
+                    // this.setState((prevState)=>({donde: !prevState.done}))
+                    this.setState({done:!this.state.done})
+                }} 
                 className="delete is-pulled-right"
                 style={{height: 15, width: 10}} />
             </div>
