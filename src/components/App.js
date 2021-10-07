@@ -4,7 +4,7 @@ import '../styles.css';
 import Header from './Header';
 import Footer from './Footer';
 import ContentMain from './ContentMain'
-
+import TodoList from './TodoList';
 
 
 function App() {
@@ -13,7 +13,10 @@ function App() {
       
       <Header border={"white"}/>
       <ContentMain/>
-      <Footer year={2021} />
+      {/* Si una etiqueta no tiene hijos, se coloca como la siguiente, 
+      en caso contrario: se debe cerrar como una etiqueta normal de html */}
+      <TodoList/>
+      <Footer year={2021} >Pie</Footer>
     </div>
   );
 
