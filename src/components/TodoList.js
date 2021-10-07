@@ -10,7 +10,7 @@ function TodoList(props) {
         <div className="list-wrapper">
             {props.tasks.map((task)=>(
                 <Todo task={task}/>
-            ))}p
+            ))}
         </div>
     );
 }

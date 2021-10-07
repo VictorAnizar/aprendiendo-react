@@ -12,7 +12,7 @@ import Form from './Form';
 
 class App extends React.Component {
 
-  state = { tasks : ["Elem 1", "Elem 2", "Elem 3"] }
+  state = { tasks : [] }
   createTareas(content){
     this.setState((prevState)=>({
       tasks: [...prevState.tasks, content]

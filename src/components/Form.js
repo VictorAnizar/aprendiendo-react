@@ -17,7 +17,10 @@ class Form extends React.Component {
                     placeholder="Agrega tarea" />
                 <button className="button" onClick={(e) => {
                     e.preventDefault();
-                    this.props.onSubmit(this.state.textField)
+                    if (this.state.textField) {
+                        this.props.onSubmit(this.state.textField)
+                        this.setState({textField: ""})
+                    }
                 }}>Crear tarea </button>
             </form>
         );
