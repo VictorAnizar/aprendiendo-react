@@ -65,11 +65,26 @@ class ContentMain extends React.Component {
 
     //metodo para crear tareas del componente
     createTareas(content) {
+        let ultimoIndex=this.state.tasks[this.state.tasks.length-1].id;
+        let nuevaTarea={
+            id:ultimoIndex+1,
+            nombre: content,
+            finalizada: false
+        }
         this.setState((prevState) => ({
-            tasks: [...prevState.tasks, content]
+            tasks: [...prevState.tasks, nuevaTarea]
         }));
     }
 
+
+    eliminarTarea(idParameter){
+        const taskIndex = this.state.tasks.findIndex(
+            (item) => item.id === idParameter
+        );
+        const tasksCopy = [...this.state.tasks];
+        tasksCopy.splice(0,taskIndex);
+        this.setState({ tasks: tasksCopy });
+    }
 
     realizarTarea(idParameter) {
         const taskIndex = this.state.tasks.findIndex(
@@ -84,13 +99,12 @@ class ContentMain extends React.Component {
     }
 
     render() {
-        console.log(this.state.tasks);
         return (
             //container principal
             <div className="content">
 
                 <TodoList className="content" tasks={this.state.tasks} realizarTarea={(id)=>this.realizarTarea(id)} />
-                <Form className="content" onSubmit={(val) => this.createTareas(val)} />
+                <Form className="content" tasks={this.state.tasks} onSubmit={(val) => this.createTareas(val)} />
                 <ListCards />
             </div>
         );

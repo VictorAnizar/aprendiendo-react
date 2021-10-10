@@ -10,7 +10,6 @@ class TodoList extends React.Component {
 
     render(){
 
-        console.log(this.props.tasks);
 
         return (
             

@@ -1,6 +1,12 @@
-button{
+
+.acciones{
+    background-color: white;
     width: 100%;
-    
+    border-radius: 10px;
+    border: none;
+    height: 40px;
+    box-shadow: 0px 0px 10px black;
+    font-size: 30px;
 }
 
 .done{
@@ -13,10 +19,23 @@ button{
     box-shadow: 0px 0px 10px yellow !important;
 }
 
-.list-item{
-    border-radius: 10px;
-    border: none;
-    height: 40px;
-    box-shadow: 0px 0px 10px black;
-    font-size: 30px;
+
+
+.botones-acciones-box{
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+    
+}
+
+.boton-eliminar{
+    flex-basis: 20%;
+    border: 5px solid crimson;
+    font-size: 15px;
+}
+
+.boton-editar{
+    font-size: 15px;
+    flex-basis: 20%;
+    border: 5px solid blue;
 }
