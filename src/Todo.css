@@ -1,3 +1,22 @@
+button{
+    width: 100%;
+    
+}
+
 .done{
     text-decoration: line-through;
+    background-color: green;
+}
+
+.notDone{
+    text-decoration: none;
+    box-shadow: 0px 0px 10px yellow !important;
+}
+
+.list-item{
+    border-radius: 10px;
+    border: none;
+    height: 40px;
+    box-shadow: 0px 0px 10px black;
+    font-size: 30px;
 }

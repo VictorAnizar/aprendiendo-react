@@ -5,30 +5,24 @@ import '../styles.css';
 import Header from './Header';
 import Footer from './Footer';
 import ContentMain from './ContentMain'
-import TodoList from './TodoList';
-import Form from './Form';
+
 
 
 
 class App extends React.Component {
-
-  state = { tasks : [] }
-  createTareas(content){
-    this.setState((prevState)=>({
-      tasks: [...prevState.tasks, content]
-    }));
-  }
-
+  
+  //lo que se va a renderizar de la app
   render(){
     return (
+      //container principal
       <div className="layout">
-        
+        {/* Header de la app */}
         <Header border={"white"}/>
-        <ContentMain className="content"/>
+        {/* Donde va a estar el contenido de la pagina */}
+        <ContentMain />
         {/* Si una etiqueta no tiene hijos, se coloca como la siguiente, 
         en caso contrario: se debe cerrar como una etiqueta normal de html */}
-        <TodoList className="content" tasks={this.state.tasks}/>
-        <Form className="content" onSubmit={(val)=>this.createTareas(val)}/>
+        {/* Pie de pagina */}
         <Footer year={2021} ></Footer>
       </div>
     );
