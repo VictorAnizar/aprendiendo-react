@@ -69,14 +69,27 @@ class ContentMain extends React.Component {
             tasks: [...prevState.tasks, content]
         }));
     }
-  
+
+
+    realizarTarea(idParameter) {
+        const taskIndex = this.state.tasks.findIndex(
+            (item) => item.id === idParameter
+        );
+        const tasksCopy = [...this.state.tasks];
+        tasksCopy[taskIndex] = {
+            ...tasksCopy[taskIndex],
+            finalizada: !this.state.tasks[taskIndex].finalizada,
+        };
+        this.setState({ tasks: tasksCopy });
+    }
+
     render() {
         console.log(this.state.tasks);
         return (
             //container principal
             <div className="content">
 
-                <TodoList className="content" tasks={this.state.tasks} />
+                <TodoList className="content" tasks={this.state.tasks} realizarTarea={(id)=>this.realizarTarea(id)} />
                 <Form className="content" onSubmit={(val) => this.createTareas(val)} />
                 <ListCards />
             </div>

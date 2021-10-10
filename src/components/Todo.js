@@ -3,11 +3,8 @@ import '../Todo.css'
 
 
 class Todo extends React.Component {
-    state = {
-        done: this.props.task.finalizada
-    };
+    
     render() {
-        console.log(  this.props.task.nombre+"--"+  this.state.done    );
         return (
             <div >
                 <button
@@ -15,16 +12,12 @@ class Todo extends React.Component {
                         e.preventDefault()
                         // this.setState((prevState)=>({donde: !prevState.done}))
                         // this.setState({done:!this.state.done})
-                        this.setState(
-                            (prev) => (
-                                { done: !prev.done }
-                            )
-                        )
+                        this.props.realizarTarea(this.props.task.id)
                     }}
-                    className={`list-item ${this.state.done ? 'done' : 'notDone'}`}
+                    className={`list-item ${this.props.task.finalizada ? 'done' : 'notDone'}`}
                 >
                     {/* {this.state.done.toString()} */}
-                    {this.props.task.nombre}  <span className="estatus-tarea">{this.state.done ? "Finalizada" : "Pendiente"}</span>
+                    {this.props.task.nombre}  <span className="estatus-tarea">{this.props.task.finalizada ? "Finalizada" : "Pendiente"}</span>
                 </button>
             </div>
         );
