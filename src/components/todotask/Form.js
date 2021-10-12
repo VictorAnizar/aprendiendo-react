@@ -1,5 +1,5 @@
 import React from "react";
-import '../Form.css'
+import '../../Form.css'
 class Form extends React.Component {
     state = { textField: '' }
     render() {

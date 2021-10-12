@@ -1,8 +1,8 @@
 import React from 'react';
 import Img1 from '../assets/img/img1.png'
-import Form from './Form';
-import TodoList from './TodoList';
-import EditTodo from './EditTodo';
+import Form from './todotask/Form';
+import TodoList from './todotask/TodoList';
+import EditTodo from './todotask/EditTodo';
 
 //Componente de una tarjeta simple
 const Card = () => {

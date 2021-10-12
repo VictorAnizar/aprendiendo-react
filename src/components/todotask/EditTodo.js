@@ -1,6 +1,6 @@
 import React from "react";
-import '../EditTodo.css'
-import '../Todo.css'
+import '../../EditTodo.css'
+import '../../Todo.css'
 
 class EditTodo extends React.Component {
 

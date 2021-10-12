@@ -1,3 +1,8 @@
+# Crear un proyecto de react
+`npx create-react-app <nombreProyecto>` 
+la "x" es por execute. 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
