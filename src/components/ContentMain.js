@@ -105,8 +105,12 @@ class ContentMain extends React.Component {
     }
 
 
-    editarTarea(idParameter){
-        
+    editarTarea(idParameter, val){
+        const taskIndex = this.state.tasks.findIndex(
+            (item) => item.id === idParameter
+        );
+        const tasksCopy = [...this.state.tasks];
+        tasksCopy[taskIndex].nombre=val
     }
 
     render() {
@@ -119,7 +123,7 @@ class ContentMain extends React.Component {
                     tasks={this.state.tasks}
                     realizarTarea={(id) => this.realizarTarea(id)}
                     eliminarTarea={(id) => this.eliminarTarea(id)}
-                    editarTarea={(id)=>this.editarTarea(id)}
+                    editarTarea={(id, val)=>this.editarTarea(id, val)}
                 />
 
                 <Form

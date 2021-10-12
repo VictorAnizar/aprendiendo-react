@@ -47,6 +47,7 @@ class Todo extends React.Component {
                 <EditTodo 
                     task={this.props.task }
                     handleClick={this.handleClick }
+                    editarTarea={this.props.editarTarea}
                 /> : null}
 
             </div>
