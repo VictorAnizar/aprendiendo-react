@@ -2,7 +2,7 @@ import React from 'react';
 import Img1 from '../assets/img/img1.png'
 import Form from './Form';
 import TodoList from './TodoList';
-
+import EditTodo from './EditTodo';
 
 //Componente de una tarjeta simple
 const Card = () => {
@@ -65,9 +65,15 @@ class ContentMain extends React.Component {
 
     //metodo para crear tareas del componente
     createTareas(content) {
-        let ultimoIndex=this.state.tasks[this.state.tasks.length-1].id;
-        let nuevaTarea={
-            id:ultimoIndex+1,
+        let ultimoIndex ;
+        if (this.state.tasks.length===0) {
+            ultimoIndex = 0;
+        }
+        else{
+          ultimoIndex  = this.state.tasks[this.state.tasks.length - 1].id;
+        }
+        let nuevaTarea = {
+            id: ultimoIndex + 1,
             nombre: content,
             finalizada: false
         }
@@ -77,12 +83,12 @@ class ContentMain extends React.Component {
     }
 
 
-    eliminarTarea(idParameter){
+    eliminarTarea(idParameter) {
         const taskIndex = this.state.tasks.findIndex(
             (item) => item.id === idParameter
         );
         const tasksCopy = [...this.state.tasks];
-        tasksCopy.splice(0,taskIndex);
+        tasksCopy.splice( taskIndex,1);
         this.setState({ tasks: tasksCopy });
     }
 
@@ -98,13 +104,29 @@ class ContentMain extends React.Component {
         this.setState({ tasks: tasksCopy });
     }
 
+
+    editarTarea(idParameter){
+        
+    }
+
     render() {
         return (
             //container principal
             <div className="content">
 
-                <TodoList className="content" tasks={this.state.tasks} realizarTarea={(id)=>this.realizarTarea(id)} />
-                <Form className="content" tasks={this.state.tasks} onSubmit={(val) => this.createTareas(val)} />
+                <TodoList
+                    className="content"
+                    tasks={this.state.tasks}
+                    realizarTarea={(id) => this.realizarTarea(id)}
+                    eliminarTarea={(id) => this.eliminarTarea(id)}
+                    editarTarea={(id)=>this.editarTarea(id)}
+                />
+
+                <Form
+                    className="content"
+                    tasks={this.state.tasks}
+                    onSubmit={(val) => this.createTareas(val)}
+                />
                 <ListCards />
             </div>
         );

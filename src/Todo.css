@@ -39,3 +39,10 @@
     flex-basis: 20%;
     border: 5px solid blue;
 }
+
+.estatus-tarea{
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    font-size: 15px;
+}

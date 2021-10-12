@@ -8,23 +8,28 @@ import '../TodoList.css'
 
 class TodoList extends React.Component {
 
-    render(){
+    render() {
 
 
         return (
-            
+
             <div className="list-wrapper">
-                <h1>Hay {this.props.tasks.length} tareas(s): 
-                {
-                this.props.tasks.filter((task) => task.finalizada===true).length
-                } Finalizadas y {
-                this.props.tasks.filter((task) => task.finalizada===false).length
-                }  Pendientes  </h1>
-                
+                <h1>Hay {this.props.tasks.length} tareas(s):
+                    {
+                        this.props.tasks.filter((task) => task.finalizada === true).length
+                    } Finalizadas y {
+                        this.props.tasks.filter((task) => task.finalizada === false).length
+                    }  Pendientes  </h1>
+
                 {this.props.tasks.map((task) => (
-                    <Todo task={task} realizarTarea={this.props.realizarTarea}/>   
+                    <Todo
+                        task={task} 
+                        realizarTarea={this.props.realizarTarea}
+                        eliminarTarea={this.props.eliminarTarea}
+                        editarTarea={this.props.editarTarea}
+                    />
                 ))}
-            
+
             </div>
         );
     }

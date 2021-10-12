@@ -16,12 +16,7 @@ class Form extends React.Component {
                     className="input"
                     placeholder="Agrega tarea" />
                 <button className="button" onClick={(e) => {
-                    // Tareas que llegan por parametros
-                    this.props.tasks.map((task) => {
-                        console.log(task);
-                    })
-                    console.log("-----");
-                    //Fin tareas por parametros
+                   
                     e.preventDefault();
                     if (this.state.textField) {
                         this.props.onSubmit(this.state.textField)

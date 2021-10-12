@@ -5,7 +5,7 @@ form{
     /* align-items: center; */
     margin: 10px auto;
 
-    width: 50%;
+    width: 60%;
 }
 
 input{
@@ -15,8 +15,8 @@ input{
 
 }
 .button{
-    background-color: crimson;
-    color: white;
+    background-color: greenyellow;
+    color: #333;
     font-size: 30px;
     border-radius: 10px;
 }
