@@ -57,7 +57,7 @@ class ContentMain extends React.Component {
             },
             {
                 id: 3,
-                nombre: "Aprender SQL",
+                nombre: "Do JiuJitsu",
                 finalizada: false
             }
         ]

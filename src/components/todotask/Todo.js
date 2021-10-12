@@ -8,7 +8,7 @@ class Todo extends React.Component {
         clicked: false
     }
 
-    handleClick() {
+    handleClick =(e)=> {
         this.setState((prev)=>({
             clicked: !prev.clicked
         }));
@@ -43,9 +43,11 @@ class Todo extends React.Component {
                         this.handleClick()
                     }}
                     className="acciones boton-editar">Editar</button>
-                {this.state.clicked ? <EditTodo 
-                task={this.props.task }
-                handleClick={this.handleClick }/> : null}
+                {this.state.clicked ? 
+                <EditTodo 
+                    task={this.props.task }
+                    handleClick={this.handleClick }
+                /> : null}
 
             </div>
 
