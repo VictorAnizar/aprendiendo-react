@@ -58,7 +58,7 @@ class ContentMain extends React.Component {
             {
                 id: 3,
                 nombre: "Do JiuJitsu",
-                finalizada: false
+                finalizada: true
             }
         ]
     }
