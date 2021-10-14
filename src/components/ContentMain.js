@@ -2,7 +2,6 @@ import React from 'react';
 import Img1 from '../assets/img/img1.png'
 import Form from './todotask/Form';
 import TodoList from './todotask/TodoList';
-import EditTodo from './todotask/EditTodo';
 
 //Componente de una tarjeta simple
 const Card = () => {
@@ -44,23 +43,34 @@ const ListCards = () => {
 class ContentMain extends React.Component {
     //arreglo de estado del componente
     state = {
-        tasks: [
-            {
-                id: 1,
-                nombre: "Comer pizza",
-                finalizada: false
-            },
-            {
-                id: 2,
-                nombre: "Comprar pan",
-                finalizada: true
-            },
-            {
-                id: 3,
-                nombre: "Do JiuJitsu",
-                finalizada: true
-            }
-        ]
+        tasks: []
+    }
+
+    //cuando se cargue este componente, se ejecuta lo de este metodo.
+    //este metodo se ejecuta despues de render
+    componentDidMount(){
+        
+       setTimeout(() => {
+        this.setState({
+            tasks: [
+                {
+                    id: 1,
+                    nombre: "Comer pizza",
+                    finalizada: false
+                },
+                {
+                    id: 2,
+                    nombre: "Comprar pan",
+                    finalizada: true
+                },
+                {
+                    id: 3,
+                    nombre: "Do JiuJitsu",
+                    finalizada: true
+                }
+            ]
+        });
+       }, 2000);
     }
 
     //metodo para crear tareas del componente
