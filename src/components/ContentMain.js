@@ -2,6 +2,7 @@ import React from 'react';
 import Img1 from '../assets/img/img1.png'
 import Form from './todotask/Form';
 import TodoList from './todotask/TodoList';
+import ContinuousSlider from './material/ContinuousSlider';
 
 //Componente de una tarjeta simple
 const Card = () => {
@@ -50,7 +51,7 @@ class ContentMain extends React.Component {
     //este metodo se ejecuta despues de render
     componentDidMount(){
         
-       setTimeout(() => {
+    //    setTimeout(() => {
         this.setState({
             tasks: [
                 {
@@ -70,7 +71,7 @@ class ContentMain extends React.Component {
                 }
             ]
         });
-       }, 2000);
+    //    }, 2000);
     }
 
     //metodo para crear tareas del componente
@@ -127,7 +128,7 @@ class ContentMain extends React.Component {
         return (
             //container principal
             <div className="content">
-
+                <ContinuousSlider/>
                 <TodoList
                     className="content"
                     tasks={this.state.tasks}

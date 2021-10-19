@@ -1,6 +1,5 @@
 
 .acciones{
-    background-color: white;
     width: 100%;
     border-radius: 10px;
     border: none;
@@ -30,14 +29,12 @@
 
 .boton-eliminar{
     flex-basis: 20%;
-    border: 5px solid crimson;
     font-size: 15px;
 }
 
 .boton-editar{
     font-size: 15px;
     flex-basis: 20%;
-    border: 5px solid blue;
 }
 
 .estatus-tarea{

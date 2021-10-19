@@ -1,6 +1,7 @@
 import React from "react";
 import '../../Todo.css'
 import EditTodo from "./EditTodo";
+import Button from '@mui/material/Button';
 
 
 class Todo extends React.Component {
@@ -8,8 +9,8 @@ class Todo extends React.Component {
         clicked: false
     }
 
-    handleClick =(e)=> {
-        this.setState((prev)=>({
+    handleClick = (e) => {
+        this.setState((prev) => ({
             clicked: !prev.clicked
         }));
     }
@@ -17,7 +18,8 @@ class Todo extends React.Component {
     render() {
         return (
             <div className="botones-acciones-box">
-                <button
+                <Button variant="outlined"
+                    color="success"
                     onClick={(e) => {
                         e.preventDefault()
                         // this.setState((prevState)=>({donde: !prevState.done}))
@@ -28,27 +30,31 @@ class Todo extends React.Component {
                 >
                     {/* {this.state.done.toString()} */}
                     {this.props.task.nombre}  <span className="estatus-tarea">Estatus: {this.props.task.finalizada ? "Finalizada" : "Pendiente"}</span>
-                </button>
-                <button
+                </Button>
+               
+                <Button variant="contained"
+                    color="error"
                     onClick={(e) => {
                         e.preventDefault();
                         this.props.eliminarTarea(this.props.task.id)
                     }}
-                    className="acciones boton-eliminar">Eliminar</button>
+                    className="acciones boton-eliminar">Eliminar</Button>
 
-                <button
+                <Button variant="contained"
+                    color="secondary"
                     onClick={(e) => {
                         e.preventDefault();
                         //Aqui se llama al componente de edicion de tarea
                         this.handleClick()
                     }}
-                    className="acciones boton-editar">Editar</button>
-                {this.state.clicked ? 
-                <EditTodo 
-                    task={this.props.task }
-                    handleClick={this.handleClick }
-                    editarTarea={this.props.editarTarea}
-                /> : null}
+                    className="acciones boton-editar">Editar</Button>
+                    
+                {this.state.clicked ?
+                    <EditTodo
+                        task={this.props.task}
+                        handleClick={this.handleClick}
+                        editarTarea={this.props.editarTarea}
+                    /> : null}
 
             </div>
 
