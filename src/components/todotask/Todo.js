@@ -1,65 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import '../../Todo.css'
 import EditTodo from "./EditTodo";
 import Button from '@mui/material/Button';
 
 
-class Todo extends React.Component {
-    state = {
-        clicked: false
+// class Todo extends React.Component {
+function Todo(props) {
+    // state = {
+    //     clicked: false
+    // }
+    const [clicked, setClicked] = React.useState(false);
+
+    const handleClick = () => {
+        // this.setState((prev) => (
+        // {
+        //     clicked: !prev.clicked
+        // }
+        setClicked(!(clicked));
+        
+        // ));
     }
 
-    handleClick = (e) => {
-        this.setState((prev) => ({
-            clicked: !prev.clicked
-        }));
-    }
-
-    render() {
-        return (
-            <div className="botones-acciones-box">
-                <Button variant="outlined"
-                    color="success"
-                    onClick={(e) => {
-                        e.preventDefault()
+    // render() {
+    return (
+        <div className="botones-acciones-box">
+            <Button variant="outlined"
+                color="success"
+                onClick={(e) => {
+                    e.preventDefault()
                         // this.setState((prevState)=>({donde: !prevState.done}))
                         // this.setState({done:!this.state.done})
-                        this.props.realizarTarea(this.props.task.id)
-                    }}
-                    className={`acciones ${this.props.task.finalizada ? 'done' : 'notDone'}`}
-                >
-                    {/* {this.state.done.toString()} */}
-                    {this.props.task.nombre}  <span className="estatus-tarea">Estatus: {this.props.task.finalizada ? "Finalizada" : "Pendiente"}</span>
-                </Button>
-               
-                <Button variant="contained"
-                    color="error"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        this.props.eliminarTarea(this.props.task.id)
-                    }}
-                    className="acciones boton-eliminar">Eliminar</Button>
+                        /*this.*/props.realizarTarea(/*this.*/props.task.id)
+                }}
+                className={`acciones ${/*this.*/props.task.finalizada ? 'done' : 'notDone'}`}
+            >
+                {/* {this.state.done.toString()} */}
+                {/*this.*/props.task.nombre}  <span className="estatus-tarea">Estatus: {/*this.*/props.task.finalizada ? "Finalizada" : "Pendiente"}</span>
+            </Button>
 
-                <Button variant="contained"
-                    color="secondary"
-                    onClick={(e) => {
-                        e.preventDefault();
+            <Button variant="contained"
+                color="error"
+                onClick={(e) => {
+                    e.preventDefault();
+                        /*this.*/props.eliminarTarea(/*this.*/props.task.id)
+                }}
+                className="acciones boton-eliminar">Eliminar</Button>
+
+            <Button variant="contained"
+                color="secondary"
+                onClick={(e) => {
+                    e.preventDefault();
                         //Aqui se llama al componente de edicion de tarea
-                        this.handleClick()
-                    }}
-                    className="acciones boton-editar">Editar</Button>
-                    
-                {this.state.clicked ?
-                    <EditTodo
-                        task={this.props.task}
-                        handleClick={this.handleClick}
-                        editarTarea={this.props.editarTarea}
-                    /> : null}
+                        /*this.*/handleClick();
+                    console.log(clicked);
+                }}
+                className="acciones boton-editar">Editar</Button>
 
-            </div>
+            {/*this.state.*/
+            clicked ?
+                <EditTodo
+                    task={/*this.*/props.task}
+                    handleClick={/*this.*/handleClick}
+                    editarTarea={/*this.*/props.editarTarea}
+                /> : null
 
-        );
-    }
+            }
+
+        </div>
+
+    );
+    // }
 }
 
 export default Todo;

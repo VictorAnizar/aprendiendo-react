@@ -8,6 +8,7 @@ function Form(props) {
     //Un hook extiende las funcionalidades de un componente. Permite hacer cosas nuevas
     // state = { textField: '' }
 
+    //HOOK DE USESTATE
     //variable y funcion modificadora       //valor inicial de state
     const [textField, setTextField] = React.useState('');
     return (

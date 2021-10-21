@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import '../../EditTodo.css'
 import '../../Todo.css'
 
-class EditTodo extends React.Component {
-    state = {
-        textField: ''
-    }
-    render() {
+// class EditTodo extends React.Component {
+function EditTodo(props){
+    // state = {
+    //     textField: ''
+    // }
+    const [textField, setTextField] = React.useState('');
+
+    // render() {
         return (
             <div className="modal-edit">
                 {/* Boton cerrar */}
@@ -15,17 +18,18 @@ class EditTodo extends React.Component {
                     onClick={(e) => {
                         e.preventDefault();
                         //Se destruye este componente (Modal edit)
-                        this.props.handleClick()
+                        props.handleClick()
                     }}
                 >Cerrar</button>
-                <h2>Editar tarea: {this.props.task.nombre}</h2>
+                <h2>Editar tarea: {props.task.nombre}</h2>
 
                 <form>
                     <input
                         placeholder="Editar tarea"
                         onChange={
                             (e) => {
-                                this.setState({ textField: e.target.value })
+                                // this.setState({ textField: e.target.value })
+                                setTextField(e.target.value);
                             }
                         }
                     />
@@ -37,10 +41,10 @@ class EditTodo extends React.Component {
                         onClick={
                             e=>{
                                 e.preventDefault();
-                                if(this.state.textField){
-                                    this.props.editarTarea(this.props.task.id, this.state.textField)
+                                if(textField){
+                                    props.editarTarea(props.task.id, textField)
                                 }
-                                this.props.handleClick()
+                                props.handleClick()
                             }
                         }
                         >
@@ -54,14 +58,14 @@ class EditTodo extends React.Component {
                         onClick={(e) => {
                             e.preventDefault();
                             //Se destruye este componente (Modal edit)
-                            this.props.handleClick()
+                            props.handleClick()
                         }}
                     >Cancelar</button>
 
                 </div>
             </div>
         );
-    }
+    // }
 }
 
 export default EditTodo;
