@@ -1,3 +1,6 @@
+
+
+
 # Crear un proyecto de react
 `npx create-react-app <nombreProyecto>` 
 la "x" es por execute. 

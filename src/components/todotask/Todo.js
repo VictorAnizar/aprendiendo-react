@@ -11,6 +11,13 @@ function Todo(props) {
     // }
     const [clicked, setClicked] = React.useState(false);
 
+    //se ejecuta despues del render
+    //cuando cambie la variable dentro del arreglo del segundo param, se ejecta la funcion de callback
+    React.useEffect(()=>{
+        console.log("Se clickeo");
+    }, [clicked])
+
+
     const handleClick = () => {
         // this.setState((prev) => (
         // {
