@@ -41,150 +41,153 @@ const ListCards = () => {
 }
 
 
-let parsedTodos=[];
-const localStorageTodos = localStorage.getItem('TASKS_V1');
+// let parsedTodos = [];
+// const localStorageTodos = localStorage.getItem('TASKS_V1');
 
 
 
 //Componente de clase que es el contenedor en sí
-class ContentMain extends React.Component {
+// class ContentMain extends React.Component {
+function ContentMain(props) {
     //arreglo de estado del componente
-    state = {
-        tasks: [
-            {
-                id: 1,
-                nombre: "Comer pizza",
-                finalizada: false
-            },
-            {
-                id: 2,
-                nombre: "Comprar pan",
-                finalizada: true
-            },
-            {
-                id: 3,
-                nombre: "Do JiuJitsu",
-                finalizada: true
-            }
-        ]
-    }
+    // state = {
+    //     tasks: [
+    //         {
+    //             id: 1,
+    //             nombre: "Comer pizza",
+    //             finalizada: false
+    //         },
+    //         {
+    //             id: 2,
+    //             nombre: "Comprar pan",
+    //             finalizada: true
+    //         },
+    //         {
+    //             id: 3,
+    //             nombre: "Do JiuJitsu",
+    //             finalizada: true
+    //         }
+    //     ]
+    // }
 
-    /*
-         React.useEffect(() => {
+    const [tasks, setTasks] = React.useState([]);
+    React.useEffect(() => {
         setTasks([
-            { id:1 ,nombre: "Sesión 1 (JSX)", finalizada: true },
-            { id:1 ,nombre: "Sesión 2 (Estado y propiedades)", finalizada: true },
-            { id:1 ,nombre: "Sesión 3 (Ciclo de vida)", finalizada: true },
-            { id:1 ,nombre: "Sesión 4 (Hooks)", finalizada: false },
-            { id:1 ,nombre: "Sesión 5 (Hooks)", finalizada: false },
-            { id:1 ,nombre: "Sesión 6 (Rutas)", finalizada: false },
-            { id:1 ,nombre: "Sesión 7 (PWA)", finalizada: false },
-            { id:1 ,nombre: "Sesión 8 (Material UI)", finalizada: false },
+            { id: 1, nombre: "Sesión 1 (JSX)", finalizada: true },
+            { id: 1, nombre: "Sesión 2 (Estado y propiedades)", finalizada: true },
+            { id: 1, nombre: "Sesión 3 (Ciclo de vida)", finalizada: true },
+            { id: 1, nombre: "Sesión 4 (Hooks)", finalizada: false },
+            { id: 1, nombre: "Sesión 5 (Hooks)", finalizada: false },
+            { id: 1, nombre: "Sesión 6 (Rutas)", finalizada: false },
+            { id: 1, nombre: "Sesión 7 (PWA)", finalizada: false },
+            { id: 1, nombre: "Sesión 8 (Material UI)", finalizada: false },
         ])
-    })
-    */
+    }, [])
+
 
     //cuando se cargue este componente, se ejecuta lo de este metodo.
     //este metodo se ejecuta despues de render
-    componentDidMount() {
+    // componentDidMount() {
 
-        this.setState({
-            tasks: [
-                {
-                    id: 1,
-                    nombre: "Comer pizza",
-                    finalizada: false
-                },
-                {
-                    id: 2,
-                    nombre: "Comprar pan",
-                    finalizada: true
-                },
-                {
-                    id: 3,
-                    nombre: "Do JiuJitsu",
-                    finalizada: true
-                }
-            ]
-        });
-        localStorage.setItem('TASKS_V1', JSON.stringify(this.state.tasks));
-        // parsedTodos = JSON.stringify(...this.state.tasks);
-    }
+    //     this.setState({
+    //         tasks: [
+    //             {
+    //                 id: 1,
+    //                 nombre: "Comer pizza",
+    //                 finalizada: false
+    //             },
+    //             {
+    //                 id: 2,
+    //                 nombre: "Comprar pan",
+    //                 finalizada: true
+    //             },
+    //             {
+    //                 id: 3,
+    //                 nombre: "Do JiuJitsu",
+    //                 finalizada: true
+    //             }
+    //         ]
+    //     });
+    //     localStorage.setItem('TASKS_V1', JSON.stringify(this.state.tasks));
+    //     // parsedTodos = JSON.stringify(...this.state.tasks);
+    // }
 
     //metodo para crear tareas del componente
-    createTareas(content) {
+    const createTareas=(content) =>{
         let ultimoIndex;
-        if (this.state.tasks.length === 0) {
+        if (tasks.length === 0) {
             ultimoIndex = 0;
         }
         else {
-            ultimoIndex = this.state.tasks[this.state.tasks.length - 1].id;
+            ultimoIndex = tasks[tasks.length - 1].id;
         }
         let nuevaTarea = {
             id: ultimoIndex + 1,
             nombre: content,
             finalizada: false
         }
-        this.setState((prevState) => ({
+        setTasks((prevState) => ({
             tasks: [...prevState.tasks, nuevaTarea]
         }));
     }
 
 
-    eliminarTarea(idParameter) {
-        const taskIndex = this.state.tasks.findIndex(
+    const eliminarTarea=(idParameter) =>{
+        const taskIndex = tasks.findIndex(
             (item) => item.id === idParameter
         );
-        const tasksCopy = [...this.state.tasks];
+        const tasksCopy = [...tasks];
         tasksCopy.splice(taskIndex, 1);
-        this.setState({ tasks: tasksCopy });
+        // this.setState({ tasks: tasksCopy });
+        setTasks(tasksCopy)
     }
 
-    realizarTarea(idParameter) {
-        const taskIndex = this.state.tasks.findIndex(
+    const realizarTarea=(idParameter) => {
+        const taskIndex = tasks.findIndex(
             (item) => item.id === idParameter
         );
-        const tasksCopy = [...this.state.tasks];
+        const tasksCopy = [...tasks];
         tasksCopy[taskIndex] = {
             ...tasksCopy[taskIndex],
-            finalizada: !this.state.tasks[taskIndex].finalizada,
+            finalizada: !tasks[taskIndex].finalizada,
         };
-        this.setState({ tasks: tasksCopy });
+        // this.setState({ tasks: tasksCopy });
+        setTasks(tasksCopy)
     }
 
 
-    editarTarea(idParameter, val) {
-        const taskIndex = this.state.tasks.findIndex(
+    const editarTarea=(idParameter, val)=> {
+        const taskIndex = tasks.findIndex(
             (item) => item.id === idParameter
         );
-        const tasksCopy = [...this.state.tasks];
+        const tasksCopy = [...tasks];
         tasksCopy[taskIndex].nombre = val
     }
 
 
-    render() {
+    // render() {
         return (
             //container principal
             <div className="content">
                 {/* <ContinuousSlider/> */}
                 <TodoList
                     className="content"
-                    tasks={this.state.tasks}
-                    realizarTarea={(id) => this.realizarTarea(id)}
-                    eliminarTarea={(id) => this.eliminarTarea(id)}
-                    editarTarea={(id, val) => this.editarTarea(id, val)}
+                    tasks={tasks}
+                    realizarTarea={(id) => realizarTarea(id)}
+                    eliminarTarea={(id) => eliminarTarea(id)}
+                    editarTarea={(id, val) => editarTarea(id, val)}
                 />
 
                 <Form
                     className="content"
-                    tasks={this.state.tasks}
-                    onSubmit={(val) => this.createTareas(val)}
+                    tasks={tasks}
+                    onSubmit={(val) => createTareas(val)}
                 />
                 <ListCards />
             </div>
         );
 
-    }
+    // }
 
 };
 export default ContentMain;
