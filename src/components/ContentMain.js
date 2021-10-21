@@ -74,14 +74,22 @@ function ContentMain(props) {
     React.useEffect(() => {
         setTasks([
             { id: 1, nombre: "Sesión 1 (JSX)", finalizada: true },
-            { id: 1, nombre: "Sesión 2 (Estado y propiedades)", finalizada: true },
-            { id: 1, nombre: "Sesión 3 (Ciclo de vida)", finalizada: true },
-            { id: 1, nombre: "Sesión 4 (Hooks)", finalizada: false },
-            { id: 1, nombre: "Sesión 5 (Hooks)", finalizada: false },
-            { id: 1, nombre: "Sesión 6 (Rutas)", finalizada: false },
-            { id: 1, nombre: "Sesión 7 (PWA)", finalizada: false },
-            { id: 1, nombre: "Sesión 8 (Material UI)", finalizada: false },
+            { id: 2, nombre: "Sesión 2 (Estado y propiedades)", finalizada: true },
+            { id: 3, nombre: "Sesión 3 (Ciclo de vida)", finalizada: true },
+            { id: 4, nombre: "Sesión 4 (Hooks)", finalizada: false },
+            { id: 5, nombre: "Sesión 5 (Hooks)", finalizada: false },
+            { id: 6, nombre: "Sesión 6 (Rutas)", finalizada: false },
+            { id: 7, nombre: "Sesión 7 (PWA)", finalizada: false },
+            { id: 8, nombre: "Sesión 8 (Material UI)", finalizada: false },
         ])
+        // const URL = 'una url a consumir';
+        // const getData = async () =>{
+        //     const res = await fetch(URL)
+        //     const data = await res.json()
+        //     setTasks(data);
+        // }
+        // getData()
+
     }, [])
 
 
@@ -126,9 +134,7 @@ function ContentMain(props) {
             nombre: content,
             finalizada: false
         }
-        setTasks((prevState) => ({
-            tasks: [...prevState.tasks, nuevaTarea]
-        }));
+        setTasks([...tasks, nuevaTarea]);
     }
 
 
