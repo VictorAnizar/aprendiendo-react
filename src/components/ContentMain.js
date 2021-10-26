@@ -1,74 +1,29 @@
 import React from 'react';
-import Img1 from '../assets/img/img1.png'
 import Form from './todotask/Form';
 import TodoList from './todotask/TodoList';
+import Home from './Home';
+import Header from './Header';
+import Footer from './Footer';
+import PageNotFound from './PageNotFound'
+
+
+import '../styles.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+
+
 // import ContinuousSlider from './material/ContinuousSlider';
 
-//Componente de una tarjeta simple
-const Card = () => {
-    return <div style={{
-        border: "1px solid gray",
-        borderRadius: "5px",
-        width: "250px",
-        textAlign: "center",
-        padding: "0px 10px"
-    }}>
-        <h3>Negative One</h3>
-        <img src={Img1} alt="imagen1" width="100%" />
-        <p className="justificado">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus pulvinar tempus. Nullam vitae odio sagittis quam varius pharetra. Praesent id est vitae justo iaculis imperdiet. </p>
-    </div>
-}
-
-//Componente de lista de tarjetas
-const ListCards = () => {
-    return (
-        <main >
-            <h1>Our products</h1>
-            <p className="justificado">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus pulvinar tempus. Nullam vitae odio sagittis quam varius pharetra. Praesent id est vitae justo iaculis imperdiet. Nullam euismod lectus libero, quis scelerisque lorem pretium ac. Suspendisse eros mauris, viverra vitae blandit vitae, rutrum blandit tortor. Maecenas vestibulum at arcu at placerat. Vestibulum ac posuere risus, eget porttitor orci. Etiam viverra faucibus sapien, sit amet ornare justo pharetra ac. Donec nec purus tristique, suscipit metus ut, dignissim lacus. Donec cursus ultricies lorem, sed tempus dolor sagittis a.</p>
-            <div style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                gap: "10px"
-            }}>
-                <Card />
-                <Card />
-                <Card />
-            </div>
-
-        </main>
-    );
-}
-
-
-// let parsedTodos = [];
-// const localStorageTodos = localStorage.getItem('TASKS_V1');
 
 
 
 //Componente de clase que es el contenedor en sí
 // class ContentMain extends React.Component {
 function ContentMain(props) {
-    //arreglo de estado del componente
-    // state = {
-    //     tasks: [
-    //         {
-    //             id: 1,
-    //             nombre: "Comer pizza",
-    //             finalizada: false
-    //         },
-    //         {
-    //             id: 2,
-    //             nombre: "Comprar pan",
-    //             finalizada: true
-    //         },
-    //         {
-    //             id: 3,
-    //             nombre: "Do JiuJitsu",
-    //             finalizada: true
-    //         }
-    //     ]
-    // }
 
     const [tasks, setTasks] = React.useState([]);
     React.useEffect(() => {
@@ -93,35 +48,9 @@ function ContentMain(props) {
     }, [])
 
 
-    //cuando se cargue este componente, se ejecuta lo de este metodo.
-    //este metodo se ejecuta despues de render
-    // componentDidMount() {
-
-    //     this.setState({
-    //         tasks: [
-    //             {
-    //                 id: 1,
-    //                 nombre: "Comer pizza",
-    //                 finalizada: false
-    //             },
-    //             {
-    //                 id: 2,
-    //                 nombre: "Comprar pan",
-    //                 finalizada: true
-    //             },
-    //             {
-    //                 id: 3,
-    //                 nombre: "Do JiuJitsu",
-    //                 finalizada: true
-    //             }
-    //         ]
-    //     });
-    //     localStorage.setItem('TASKS_V1', JSON.stringify(this.state.tasks));
-    //     // parsedTodos = JSON.stringify(...this.state.tasks);
-    // }
 
     //metodo para crear tareas del componente
-    const createTareas=(content) =>{
+    const createTareas = (content) => {
         let ultimoIndex;
         if (tasks.length === 0) {
             ultimoIndex = 0;
@@ -138,7 +67,7 @@ function ContentMain(props) {
     }
 
 
-    const eliminarTarea=(idParameter) =>{
+    const eliminarTarea = (idParameter) => {
         const taskIndex = tasks.findIndex(
             (item) => item.id === idParameter
         );
@@ -148,7 +77,7 @@ function ContentMain(props) {
         setTasks(tasksCopy)
     }
 
-    const realizarTarea=(idParameter) => {
+    const realizarTarea = (idParameter) => {
         const taskIndex = tasks.findIndex(
             (item) => item.id === idParameter
         );
@@ -162,7 +91,7 @@ function ContentMain(props) {
     }
 
 
-    const editarTarea=(idParameter, val)=> {
+    const editarTarea = (idParameter, val) => {
         const taskIndex = tasks.findIndex(
             (item) => item.id === idParameter
         );
@@ -172,26 +101,69 @@ function ContentMain(props) {
 
 
     // render() {
-        return (
-            //container principal
-            <div className="content">
+    return (
+        //container principal
+        <div className="content">
+            <Router>
                 {/* <ContinuousSlider/> */}
-                <TodoList
-                    className="content"
-                    tasks={tasks}
-                    realizarTarea={(id) => realizarTarea(id)}
-                    eliminarTarea={(id) => eliminarTarea(id)}
-                    editarTarea={(id, val) => editarTarea(id, val)}
-                />
+                {/* <div className="layout"> */}
+                <header style={
+                    {
 
-                <Form
-                    className="content"
-                    tasks={tasks}
-                    onSubmit={(val) => createTareas(val)}
-                />
-                <ListCards />
-            </div>
-        );
+                        borderBottomWidth: "5px",
+                        borderBottomStyle: "solid",
+                        borderBottomColor: props.border
+                    }}>
+                    <ul style={
+                        {
+                            listStyle: "none",
+                            gap: "10px",
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            flexWrap: "wrap"
+                        }}>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/tareas">tareas</Link></li>
+
+                    </ul>
+                </header>
+                <Switch>
+                <Route path="/" exact render={(props) => {
+                    return (
+                        <>
+                            <Home 
+                            {...props}
+                            />
+                        </>
+                    );
+                }} />
+                <Route path="/tareas" exact render={() => {
+                    return (
+                        <>
+                            <TodoList
+                                className="content"
+                                tasks={tasks}
+                                realizarTarea={(id) => realizarTarea(id)}
+                                eliminarTarea={(id) => eliminarTarea(id)}
+                                editarTarea={(id, val) => editarTarea(id, val)}
+                            />
+                            <Form
+                                className="content"
+                                tasks={tasks}
+                                onSubmit={(val) => createTareas(val)}
+                            />
+                        </>
+                    )
+                }} />
+                <Route component={PageNotFound}/>
+                </Switch>
+                
+                <Footer year={2021} ></Footer>
+                {/* </div> */}
+            </Router>
+        </div>
+    );
 
     // }
 

@@ -6,6 +6,53 @@
 la "x" es por execute. 
 
 
+# Components
+A component could be any object of the webpage, even could be the page itself
+
+<strong>At the lastest updates and features of react, is most recommended use functional components</strong>
+
+## State and props
+The state is a kind of "variable" which constantly changes by the time. The state defines behavior.
+The props are the properties itself of our app, those won't change accross the time. The props allow us to give communication between components
+
+# Fragments
+The Fragment "component" help us to remove the most external div in our app code. To define this, we must encapsulate our App component or our most external component (which encapsulates all the components) with the `<> ... </>` or even `<Fragment> ... <Fragment />`. If we chose the 2nd form, we must import the Respective class 
+```javascript
+import React from 'react';
+import './App.css';
+
+function App() {
+  return (
+    <>
+      <p>Hola</p>
+    </>
+  );
+}
+
+export default App;
+
+```
+# Printing variables at the HTML
+For this we must use the `{myVar}` inside the HTML code, but if "myVar" is boolean, we aren't being able to print that 
+
+# Deploying on GH pages
+Type in terminal
+
+`npm install --save gh-pages`
+
+Add in "scripts" side of package.json:
+`"deploy": "gh-pages -d build"`
+
+Add at the end of the previous file (before to close the bracket): 
+`
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build
+`
+
+Run `npm run deploy`
+
+Make a commit and push 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

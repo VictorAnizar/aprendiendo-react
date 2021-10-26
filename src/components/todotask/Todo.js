@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import '../../Todo.css'
 import EditTodo from "./EditTodo";
 import Button from '@mui/material/Button';
-
+import PropTypes from 'prop-types';
 
 // class Todo extends React.Component {
 function Todo(props) {
@@ -78,5 +78,14 @@ function Todo(props) {
     );
     // }
 }
+
+Todo.propTypes={
+    task: PropTypes.shape({
+        id: PropTypes.number,
+        nombre: PropTypes.string,
+        finalizada: PropTypes.bool
+    })
+}
+
 
 export default Todo;
