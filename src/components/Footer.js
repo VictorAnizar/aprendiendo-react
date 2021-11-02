@@ -1,5 +1,5 @@
 const Footer = (props) => (
-    <footer>
+    <footer style={{width:"100%"}}>
       This site was made by Victor!
       <span style={
         {

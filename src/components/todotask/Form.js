@@ -1,7 +1,7 @@
 import React from "react";
 import '../../Form.css'
 import Button from '@mui/material/Button';
-
+import { TextField } from "@mui/material";
 
 //class Form extends React.Component{
 function Form(props) {
@@ -13,7 +13,8 @@ function Form(props) {
     const [textField, setTextField] = React.useState('');
     return (
         <form>
-            <input
+            <TextField id="outlined-basic" label="Agregar tarea" variant="filled"
+            
                 type="text"
                 value={
                     // this.state.textField
@@ -27,7 +28,8 @@ function Form(props) {
                     }
                 }
                 className="input"
-                placeholder="Agrega tarea" />
+                placeholder="Agrega tarea"
+                style={{marginTop:"30px"}} />
             <Button variant="contained"
                 color="success"
                 className="button" onClick={(e) => {

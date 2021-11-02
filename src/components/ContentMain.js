@@ -16,6 +16,10 @@ import {
 } from "react-router-dom";
 
 
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import { Button } from '@mui/material';
+import { ButtonGroup } from '@mui/material';
 // import ContinuousSlider from './material/ContinuousSlider';
 
 
@@ -105,8 +109,6 @@ function ContentMain(props) {
         //container principal
         <div className="content">
             <Router>
-                {/* <ContinuousSlider/> */}
-                {/* <div className="layout"> */}
                 <header style={
                     {
 
@@ -114,51 +116,47 @@ function ContentMain(props) {
                         borderBottomStyle: "solid",
                         borderBottomColor: props.border
                     }}>
-                    <ul style={
-                        {
-                            listStyle: "none",
-                            gap: "10px",
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "center",
-                            flexWrap: "wrap"
-                        }}>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/tareas">tareas</Link></li>
 
-                    </ul>
+                    <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                        <Button>
+                            <Link to="/">Home</Link>
+                        </Button>
+                        <Button>
+                            <Link to="/tareas">tareas</Link>
+                        </Button>
+                    </ButtonGroup>
                 </header>
                 <Switch>
-                <Route path="/" exact render={(props) => {
-                    return (
-                        <>
-                            <Home 
-                            {...props}
-                            />
-                        </>
-                    );
-                }} />
-                <Route path="/tareas" exact render={() => {
-                    return (
-                        <>
-                            <TodoList
-                                className="content"
-                                tasks={tasks}
-                                realizarTarea={(id) => realizarTarea(id)}
-                                eliminarTarea={(id) => eliminarTarea(id)}
-                                editarTarea={(id, val) => editarTarea(id, val)}
-                            />
-                            <Form
-                                className="content"
-                                tasks={tasks}
-                                onSubmit={(val) => createTareas(val)}
-                            />
-                        </>
-                    )
-                }} />
-                <Route component={PageNotFound}/>
+                    <Route path="/" exact render={(props) => {
+                        return (
+                            <>
+                                <Home
+                                    {...props}
+                                />
+                            </>
+                        );
+                    }} />
+                    <Route path="/tareas" exact render={() => {
+                        return (
+                            <>
+                                <TodoList
+                                    className="content"
+                                    tasks={tasks}
+                                    realizarTarea={(id) => realizarTarea(id)}
+                                    eliminarTarea={(id) => eliminarTarea(id)}
+                                    editarTarea={(id, val) => editarTarea(id, val)}
+                                />
+                                <Form
+                                    className="content"
+                                    tasks={tasks}
+                                    onSubmit={(val) => createTareas(val)}
+                                />
+                            </>
+                        )
+                    }} />
+                    <Route component={PageNotFound} />
                 </Switch>
-                
+
                 <Footer year={2021} ></Footer>
                 {/* </div> */}
             </Router>
